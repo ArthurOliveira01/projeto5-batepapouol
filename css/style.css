@@ -1,0 +1,17 @@
+#top{
+    width: 375px;
+    height: 80px;
+    background-color: #ffffff;
+
+}
+
+#bottom{
+    width: 375px;
+    height: 80px;
+    top: 587px;
+}
+
+#main{
+    background-color: #e5e5e5;
+    
+}

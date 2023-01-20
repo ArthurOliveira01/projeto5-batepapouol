@@ -1,0 +1,1 @@
+Bate-papo do Uol, no qual mais de uma pessoa pode entrar e deixar a sua mensagem.
