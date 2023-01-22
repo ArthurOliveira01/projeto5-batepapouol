@@ -2,16 +2,41 @@
     width: 375px;
     height: 80px;
     background-color: #ffffff;
-
+    position: fixed;
 }
 
 #bottom{
     width: 375px;
     height: 80px;
     top: 587px;
+    position: fixed;
 }
 
-#main{
+#content{
     background-color: #e5e5e5;
-    
+
+}
+
+#ion{
+    /*background-color: #000000 !important;*/
+}
+
+.container{
+    height: 667px;
+    width: 375px;
+    align-items: content;
+}
+
+.uol img{
+    max-width: 75px;
+    width: auto;
+    max-height: 53px;
+    height: auto;
+    margin-top: 16px;
+    margin-left: 22px;
+}
+
+.send { 
+    width: 26px;
+    height: 26px;
 }

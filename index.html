@@ -9,15 +9,29 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="top">
-        <div class="icon"></div>
-        <div class="icon"></div>
-    </div>
-    <div id="main">
+    <div class="container">
+        <div id="top">
+            <div class="uol">
+                <img src="images/uol.png" alt="">
+            </div>
+            <div class="people"> 
+                <ion-icon id="ion"name="people-outline" style="color: #000000;"></ion-icon>
+            </div>
+        </div>
+        <div id="content">
 
+        </div>
+        <div id="bottom">
+            <div class="write" data-test="input-message">
+
+            </div>
+            <div class="send" data-test="send-message">
+                <ion-icon name="paper-plane-outline"></ion-icon>
+            </div>
+        </div>
     </div>
-    <div id="bottom">
-        
-    </div>
+    <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

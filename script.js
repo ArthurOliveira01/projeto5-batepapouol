@@ -9,3 +9,5 @@ function entradaSala(){
 function sendNome(){
     
 }
+
+//entradaSala();
