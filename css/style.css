@@ -144,3 +144,13 @@ body {
 .status{
     background-color: #DCDCDC;
 }
+
+#content span{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    width: 368px;
+    margin-left: 8px;   
+}

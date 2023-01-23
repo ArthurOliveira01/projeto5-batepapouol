@@ -1,5 +1,5 @@
 let nome = "";
-let content = document.querySelector('.content');
+let content = document.getElementById('content');
 let selected;
 let marca;
 let sideMenu = document.querySelector('.side');
