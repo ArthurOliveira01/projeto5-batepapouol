@@ -132,3 +132,15 @@ body {
     color: #28BB25;
     font-size: 100%;
 }
+
+.padrao{
+    background-color: #FFFFFF;
+}
+
+.privado{
+    background-color: #FFDEDE;
+}
+
+.status{
+    background-color: #DCDCDC;
+}

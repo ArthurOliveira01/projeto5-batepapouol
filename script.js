@@ -10,13 +10,6 @@ function entradaSala(){
         checkNome(nome);
     }
 }
-
-function searchMessage(){
-    const aux = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
-    aux.then(process);
-    aux.catch(errorProcess);
-}
-
 function process(r){
     const arrayMensagens = r.data;
     console.log(arrayMensagens);
@@ -31,7 +24,7 @@ function process(r){
 
         } if (arrayMensagens[i].type === "message"){
             content.innerHTML += `
-            <div data-test="message" class="normais">
+            <div data-test="message" class="padrao">
                 <span>(${arrayMensagens[i].time}) <span class="negrito">${arrayMensagens[i].from}</span> para <span class="negrito">${arrayMensagens[i].to}</span>: ${arrayMensagens[i].text}</span>
             </div>
             `;
@@ -39,7 +32,7 @@ function process(r){
         } if (arrayMensagens[i].type === "private_message"){
             if (nome === arrayMensagens[i].to || nome === arrayMensagens[i].from){
                 content.innerHTML += `
-                <div data-test="message" class="reservadas">
+                <div data-test="message" class="privado">
                     <span>(${arrayMensagens[i].time}) <span class="negrito">${arrayMensagens[i].from}</span> reservadamente para <span class="negrito">${arrayMensagens[i].to}</span>: ${arrayMensagens[i].text}</span>
                 </div>
                 `;
@@ -55,6 +48,14 @@ function process(r){
         
     }
 }
+
+function searchMessage(){
+    const aux = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
+    aux.then(process);
+    aux.catch(errorProcess);
+}
+
+
 function errorProcess(r){
     console.log(r);
 }
