@@ -106,7 +106,7 @@ function sendMessage(){
         type: "message"
     }
     document.querySelector('.write').value = '';
-    const aux = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages');
+    const aux = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', data);
     aux.then(success);
     aux.catch(notSend);
 }
@@ -209,13 +209,13 @@ function endSideMenu(){
 }
 
 function hideSide(){
-    sideMenu = document.querySelector('.menu-lateral');
-    side.classList.add('.hiddden');
+    sideMenu = document.querySelector('.hidden');
+    side.classList.add('.hidden');
 }
 
 function showSide(){
     sideMenu = document.querySelector('.menu-lateral');
-    side.classList.remove('.hiddden');
+    side.classList.remove('.hidden');
 }
 
 function online(){

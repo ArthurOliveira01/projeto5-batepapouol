@@ -118,8 +118,17 @@ body {
     overflow-x: hidden;
 }
 
-.escondido{
+.hidden{
     display: none;
 }
 
-check()
+.check{
+    width: 20px;
+    height: 15px;
+    margin-left: 50px;
+}
+
+.check ion-icon{
+    color: #28BB25;
+    font-size: 100%;
+}
