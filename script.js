@@ -1,5 +1,8 @@
 let nome = "";
 let content = document.querySelector('.content');
+let selected;
+let marca;
+let sideMenu = document.querySelector('.side')
 
 function entradaSala(){
     while(nome === ""){ 
@@ -104,5 +107,63 @@ function sendMessage(){
     const aux = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages');
     aux.then(success);
     aux.catch(notSend);
+}
+
+function selectWho(o){
+    console.log(selected);
+    if(selected === undefined){
+        const checkSelection = o.querySelector('.user .check');
+        selected = o;
+        checkSelection.innerHTML += `<ion-icon data-test="check" name="checkmark-outline"></ion-icon>`
+    } else{
+        const firstCheck = selected.querySelector('.user .check');
+        firstCheck.innerHTML = '';
+        selected = o;
+        const checkSelection = opcao.querySelector('.user .check');
+        checkSelection.innerHTML += `<ion-icon data-test="check" name="checkmark-outline"></ion-icon>`;
+    }
+}
+
+function visibility(o){
+    console.log(selected);
+    if(selected === undefined){
+        const checkSelection = o.querySelector('.visibilidade .check');
+        marca = o;
+        checkSelection.innerHTML += `<ion-icon data-test="check" name="checkmark-outline"></ion-icon>`
+    } else{
+        const firstCheck = selected.querySelector('.user .check');
+        firstCheck.innerHTML = '';
+        marca = o;
+        const checkSelection = opcao.querySelector('.visibilidade .check');
+        checkSelection.innerHTML += `<ion-icon data-test="check" name="checkmark-outline"></ion-icon>`;
+    }
+}
+
+function updateUsuarios(){
+    setInterval(getUsuarios, 8000);
+}
+
+function getUsuarios(){
+    const aux = axios.get ('https://mock-api.driven.com.br/api/v6/uol/participants');
+    aux.then (usersList);
+}
+
+function usersList(a){
+    if(sideMenu.innerHTML !== ''){
+        sideMenu.innerHTML = '';
+    }
+}
+
+function updateSideMenu(){
+    sideMenu.innerHTML += `
+        <div class="texto-negrito">
+            <p>Escolha um contato<br> para enviar mensagem:</p> 
+        </div>
+        <div data-test="all" class="texto-menu contato" onclick="selecionaContato (this)">
+            <div class="icones"><ion-icon name="people"></ion-icon></div>
+            <div class="nome-contato" >Todos</div> 
+            <div class="chcek"></div>
+        </div>
+        `;
 }
 entradaSala();
