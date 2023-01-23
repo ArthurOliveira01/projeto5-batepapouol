@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
         <div id="top">
@@ -22,7 +24,7 @@
         </div>
         <div id="bottom">
             <input class="write" data-test="input-message" placeholder="Escreva aqui..." type="text"></input>
-        <button class="send" data-test="send-message">
+        <button class="send" data-test="send-message" onclick="sendMessage()">
                 <ion-icon name="paper-plane-outline"></ion-icon>
             </button>
         </div>
