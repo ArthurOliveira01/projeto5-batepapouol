@@ -10,7 +10,7 @@
     top: 0;
     left: 0;
 }
-}
+
 
 #bottom{
     background-color: #ffffff;
@@ -84,9 +84,6 @@
 
 }
 
-#ion{
-    /*background-color: #000000 !important;*/
-}
 
 .container{
     height: 667px;
@@ -103,7 +100,19 @@
     margin-left: 22px;
 }
 
+.people img{
+    width: 42.19px;
+    height: 30.94px;
+    margin-right: 22.41px;
+}
 .send ion-icon{ 
     width: 26px;
     height: 26px;
+}
+
+body {
+    background-color: #F3F3F3;
+    font-family: roboto, sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
 }
