@@ -2,11 +2,12 @@ let nome = "";
 let content = document.querySelector('.content');
 let selected;
 let marca;
-let sideMenu = document.querySelector('.side')
+let sideMenu = document.querySelector('.side');
 
 function entradaSala(){
     while(nome === ""){ 
         nome = prompt('Digite o seu nome');
+        checkNome(nome);
     }
 }
 
@@ -22,14 +23,14 @@ function process(r){
     
     for (let i = 0; i < arrayMensagens.length; i++){
         if (arrayMensagens[i].type === "status"){
-            conteudoChat.innerHTML += `
+            content.innerHTML += `
             <div data-test="message" class="status">
                 <span>(${arrayMensagens[i].time}) <span class="negrito">${arrayMensagens[i].from}</span> ${arrayMensagens[i].text}</span>
             </div>
             `;
 
         } if (arrayMensagens[i].type === "message"){
-            conteudoChat.innerHTML += `
+            content.innerHTML += `
             <div data-test="message" class="normais">
                 <span>(${arrayMensagens[i].time}) <span class="negrito">${arrayMensagens[i].from}</span> para <span class="negrito">${arrayMensagens[i].to}</span>: ${arrayMensagens[i].text}</span>
             </div>
@@ -37,7 +38,7 @@ function process(r){
 
         } if (arrayMensagens[i].type === "private_message"){
             if (nome === arrayMensagens[i].to || nome === arrayMensagens[i].from){
-                conteudoChat.innerHTML += `
+                content.innerHTML += `
                 <div data-test="message" class="reservadas">
                     <span>(${arrayMensagens[i].time}) <span class="negrito">${arrayMensagens[i].from}</span> reservadamente para <span class="negrito">${arrayMensagens[i].to}</span>: ${arrayMensagens[i].text}</span>
                 </div>
@@ -45,7 +46,7 @@ function process(r){
             }
         
         } if (arrayMensagens[i] === arrayMensagens[arrayMensagens.length - 1]){
-            conteudoChat.innerHTML += `
+            content.innerHTML += `
             <span class="ultima" ></span>
             `;
             const aparecerUltimaMensagem = document.querySelector('.ultima');
@@ -65,7 +66,8 @@ function nameOk(){
 }
 
 function nameOff(){
-
+    alert("Troque o nome, esse já existe");
+    window.location.reload();
 }
 
 function checkNome(n){
@@ -109,6 +111,13 @@ function sendMessage(){
     aux.catch(notSend);
 }
 
+document.addEventListener("keypress", function(enter){
+    if(enter.key ==="Enter"){
+        const aux = document.querySelector('.send');
+        aux.click();
+    }
+});
+
 function selectWho(o){
     console.log(selected);
     if(selected === undefined){
@@ -145,13 +154,25 @@ function updateUsuarios(){
 
 function getUsuarios(){
     const aux = axios.get ('https://mock-api.driven.com.br/api/v6/uol/participants');
-    aux.then (usersList);
+    aux.then(usersList);
 }
 
 function usersList(a){
     if(sideMenu.innerHTML !== ''){
         sideMenu.innerHTML = '';
     }
+    const lista = a.data;
+    updateSideMenu();
+    for(let i = 0; i < lista.length; i++){
+        sideMenu.innerHTML += `
+        <div data-test="participant" class="texto-menu contato" onclick="selectWho(this)">
+            <div class="icones"><ion-icon name="person-circle"></ion-icon></div>
+            <div class="nome-contato" >${lista[i].name}</div>
+            <div class="check"></div>
+        </div>
+        `;
+    }
+    endSideMenu();
 }
 
 function updateSideMenu(){
@@ -159,11 +180,51 @@ function updateSideMenu(){
         <div class="texto-negrito">
             <p>Escolha um contato<br> para enviar mensagem:</p> 
         </div>
-        <div data-test="all" class="texto-menu contato" onclick="selecionaContato (this)">
+        <div data-test="all" class="texto-menu contato" onclick="selectWho (this)">
             <div class="icones"><ion-icon name="people"></ion-icon></div>
             <div class="nome-contato" >Todos</div> 
             <div class="chcek"></div>
         </div>
         `;
 }
+
+function endSideMenu(){
+    sideMenu.innerHTML += `
+        <div class="texto-negrito">
+            <p>Escolha a visibilidade:</p>
+        </div>
+
+        <div data-test="public" class="texto-menu visibilidade" onclick="visibility(this)">
+            <div class="icones"><ion-icon name="lock-open"></ion-icon></ion-icon></div>
+            <div class="visib" >Público</div>
+            <div class="check"></div> 
+        </div>
+
+        <div data-test="private" class="texto-menu visibilidade" onclick="visibility(this)">
+            <div class="icones"><ion-icon name="lock-closed"></ion-icon></ion-icon></div>
+            <div class="visib" >Reservadamente</div>
+            <div class="check"></div>
+        </div>
+        `;
+}
+
+function hideSide(){
+    sideMenu = document.querySelector('.menu-lateral');
+    side.classList.add('.hiddden');
+}
+
+function showSide(){
+    sideMenu = document.querySelector('.menu-lateral');
+    side.classList.remove('.hiddden');
+}
+
+function online(){
+    const data = {
+        name: `${nome}`
+    };
+}
+
+setInterval(updateMessages, 4500);
+setInterval(online, 5000);
+
 entradaSala();

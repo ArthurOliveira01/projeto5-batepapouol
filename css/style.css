@@ -32,7 +32,7 @@
     font-size: 18px;
     line-height: 21.09px;
     height: 100%;
-    width: 80%;
+    width: 100%;
     padding-left: 17px;
     border: 0;
 }
@@ -117,3 +117,9 @@ body {
     font-weight: 400;
     overflow-x: hidden;
 }
+
+.escondido{
+    display: none;
+}
+
+check()
